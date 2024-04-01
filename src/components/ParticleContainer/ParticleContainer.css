@@ -1,0 +1,7 @@
+.particlesContainer {
+  height: 300px;
+  width: 30%;
+  border: 1px black solid;
+  position: relative;
+  overflow: hidden;
+}

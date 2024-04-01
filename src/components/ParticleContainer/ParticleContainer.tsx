@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import "./ParticleContainer.css";
+import useParticles from "../useParticles";
 import Particle from "../Particle/Particle";
 
 interface ParticleContainerProps {
-  style: object
-  particleDetails: AddParticleProps[]; 
+  style: object;
+  particleDetails: AddParticleProps[];
 }
 
 export interface AddParticleProps {
@@ -12,30 +13,20 @@ export interface AddParticleProps {
   animationDuration: number;
 }
 
-function ParticleContainer({
-  style,
-  particleDetails,
-}: ParticleContainerProps) {
-  // const [particleDetails, setParticleDetails] = useState<AddParticleProps[]>(
-  //   []
-  // );
-
-  // const addParticles = (particleProps: AddParticleProps) => {
-  //   setParticleDetails([...particleDetails, particleProps]);
-  // };
-
+function ParticleContainer({ style, particleDetails =[] }: ParticleContainerProps) {
   return (
     <>
       <div className="particlesContainer" style={style}>
-        {particleDetails?.map((props, index) => (
-          <Particle key={index} id={index} {...props} />
-        ))}
+        {particleDetails?.map((props, index) => {
+          return (
+            <Particle
+              key={index}
+              id={index}
+              {...props}
+            />
+          );
+        })}
       </div>
-      {/* <button
-        onClick={() => addParticles({ ParticleSample, animationDuration: 5 })}
-      >
-        Add Particles
-      </button> */}
     </>
   );
 }

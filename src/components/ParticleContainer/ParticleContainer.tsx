@@ -3,9 +3,7 @@ import "./ParticleContainer.css";
 import Particle from "../Particle/Particle";
 
 interface ParticleContainerProps {
-  height?: string;
-  width?: string;
-  position?: "relative" | "absolute";
+  style: object
   particleDetails: AddParticleProps[]; 
 }
 
@@ -15,9 +13,7 @@ export interface AddParticleProps {
 }
 
 function ParticleContainer({
-  height = "40px",
-  width = "40px",
-  position,
+  style,
   particleDetails,
 }: ParticleContainerProps) {
   // const [particleDetails, setParticleDetails] = useState<AddParticleProps[]>(
@@ -30,7 +26,7 @@ function ParticleContainer({
 
   return (
     <>
-      <div className="particlesContainer" style={{ height, width, position }}>
+      <div className="particlesContainer" style={style}>
         {particleDetails?.map((props, index) => (
           <Particle key={index} id={index} {...props} />
         ))}

@@ -4,6 +4,7 @@ import typescript from "@rollup/plugin-typescript";
 import dts from "rollup-plugin-dts";
 import postcss from "rollup-plugin-postcss";
 import terser from "@rollup/plugin-terser";
+import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 
 import packageJson from "./package.json" assert { type: "json" };
 
@@ -34,12 +35,13 @@ export default [
         minimize: true,
       }),
       terser(),
+      peerDepsExternal(),
     ],
   },
   {
     input: "dist/esm/types/index.d.ts",
     output: [{ file: "dist/index.d.ts", format: "esm" }],
     plugins: [dts()],
-    external: [/\.css$/],
+    external: [/\.css$/,"react", "react-dom"],
   },
 ];

@@ -1,13 +1,13 @@
 {
   "name": "reaction-animation",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "A library for flying image feature.",
   "scripts": {
     "rollup": "rollup -c",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
-  "keywords": [],
+  "keywords": ["reaction-animation","flying-img","flying-object","socialmedia-reaction","instagram-reaction"],
   "author": "developerHet",
   "license": "ISC",
   "devDependencies": {

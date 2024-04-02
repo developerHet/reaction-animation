@@ -66,11 +66,11 @@ export default App;
 
 ## Feedback
 
-If you have any feedback, please reach out to us at hetpatel2312.hp@gmail.com
+If you have any feedback, please reach out to me at hetpatel2312.hp@gmail.com
 
 
 ## 🚀 About Me
-I'm a sofware developer developer...
+I'm a sofware developer...
 
 
 ## 🔗 Links

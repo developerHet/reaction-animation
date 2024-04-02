@@ -4,7 +4,8 @@ import typescript from "@rollup/plugin-typescript";
 import dts from "rollup-plugin-dts";
 import postcss from "rollup-plugin-postcss";
 import terser from "@rollup/plugin-terser";
-import peerDepsExternal from 'rollup-plugin-peer-deps-external';
+import peerDepsExternal from "rollup-plugin-peer-deps-external";
+import sourcemaps from 'rollup-plugin-sourcemaps';
 
 import packageJson from "./package.json" assert { type: "json" };
 
@@ -15,20 +16,19 @@ export default [
       {
         file: packageJson.main,
         format: "cjs",
-        sourcemap: true,
       },
       {
         file: packageJson.module,
         format: "esm",
-        sourcemap: true,
       },
     ],
     plugins: [
       resolve(),
       commonjs(),
       typescript({
-        tsconfig: "./tsconfig.json",
         exclude: ["**/*.stories.tsx", "**/stories/**"],
+        tsconfig: "./tsconfig.json",
+        sourceMap: true,
       }),
       postcss({
         plugins: [],
@@ -36,12 +36,13 @@ export default [
       }),
       terser(),
       peerDepsExternal(),
+      sourcemaps()
     ],
   },
   {
     input: "dist/esm/types/index.d.ts",
     output: [{ file: "dist/index.d.ts", format: "esm" }],
     plugins: [dts()],
-    external: [/\.css$/,"react", "react-dom"],
+    external: [/\.css$/, "react", "react-dom"],
   },
 ];

@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
-import "./Particle.css";
-import { AddParticleProps } from "../ParticleContainer/ParticleContainer";
+import "./ReactionWrapper.css";
+import { AddReactionProps } from "../AnimationContainer/AnimationContainer";
 
-interface ParticleProps extends AddParticleProps {
+
+interface ReactionWrapperProps extends AddReactionProps {
   id: number;
 }
 
-function Particle({ id, ParticleObj, animationDuration }: ParticleProps) {
+function ReactionWrapper({ id, ReactionObj, animationDuration }: ReactionWrapperProps) {
   const [position, setPosition] = useState(() => {
     const isLeft = Math.random() < 0.5;
     const dynamicPosition = isLeft
@@ -40,9 +41,9 @@ function Particle({ id, ParticleObj, animationDuration }: ParticleProps) {
   useEffect(() => {
     const timeout = setTimeout(
       () => {
-        const particleElement = document.getElementById(`particle-${id}`);
-        if (particleElement) {
-          particleElement.remove();
+        const reactionElement = document.getElementById(`reaction-${id}`);
+        if (reactionElement) {
+          reactionElement.remove();
         }
       },
       (animationDuration + 1) * 1000
@@ -52,10 +53,10 @@ function Particle({ id, ParticleObj, animationDuration }: ParticleProps) {
   }, [id]);
 
   return (
-    <div style={position} className="particle" id={`particle-${id}`}>
-      <ParticleObj />
+    <div style={position} className="reactionWrapper" id={`reaction-${id}`}>
+      <ReactionObj />
     </div>
   );
 }
 
-export default Particle;
+export default ReactionWrapper;

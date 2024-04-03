@@ -7,7 +7,7 @@ import terser from "@rollup/plugin-terser";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import sourcemaps from 'rollup-plugin-sourcemaps';
 
-import packageJson from "./package.json" assert { type: "json" };
+const packageJson = require("./package.json");
 
 export default [
   {
@@ -42,7 +42,7 @@ export default [
   {
     input: "dist/esm/types/index.d.ts",
     output: [{ file: "dist/index.d.ts", format: "esm" }],
-    plugins: [dts()],
+    plugins: [dts.default()],
     external: [/\.css$/, "react", "react-dom"],
   },
 ];
